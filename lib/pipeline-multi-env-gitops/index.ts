@@ -1,5 +1,6 @@
 import * as blueprints from '@aws-quickstart/eks-blueprints';
 import { getSecretValue } from '@aws-quickstart/eks-blueprints/dist/utils/secrets-manager-utils';
+import { KubecostAddOn } from '@kubecost/kubecost-eks-blueprints-addon';
 import * as cdk from 'aws-cdk-lib';
 import { StackProps } from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
@@ -99,6 +100,7 @@ export default class PipelineMultiEnvGitops {
                 new blueprints.ClusterAutoScalerAddOn(),
                 new blueprints.ContainerInsightsAddOn,
                 new blueprints.XrayAddOn,
+                new KubecostAddOn,
             );
 
         // Argo configuration per environment
