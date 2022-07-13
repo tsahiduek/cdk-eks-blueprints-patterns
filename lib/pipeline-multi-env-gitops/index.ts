@@ -172,7 +172,7 @@ export default class PipelineMultiEnvGitops {
                             id: PROD_ENV_ID_2,
                             stackBuilder: blueprint
                                 .clone(pipelineProps.prodEnv.region, pipelineProps.prodEnv.account)
-                                .name(PROD_ENV_ID)
+                                .name(PROD_ENV_ID_2)
                                 .teams(...prodTeams)
                                 .addOns(
                                     prodArgoAddonConfig,
