@@ -158,6 +158,16 @@ export default class PipelineMultiEnvGitops {
                     id: "prod",
                     stages: [
                         {
+                            id: `PROD_ENV_ID-2`,
+                            stackBuilder: blueprint
+                                .clone(pipelineProps.prodEnv.region, pipelineProps.prodEnv.account)
+                                .name(PROD_ENV_ID)
+                                .teams(...prodTeams)
+                                .addOns(
+                                    prodArgoAddonConfig,
+                                )
+                        },
+                        {
                             id: PROD_ENV_ID,
                             stackBuilder: blueprint
                                 .clone(pipelineProps.prodEnv.region, pipelineProps.prodEnv.account)
