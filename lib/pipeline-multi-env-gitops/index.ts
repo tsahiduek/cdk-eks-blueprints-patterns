@@ -33,7 +33,7 @@ export default class PipelineMultiEnvGitops {
         const DEV_ENV_ID = `dev-${pipelineProps.devEnv.region}`
         const TEST_ENV_ID = `test-${pipelineProps.devEnv.region}`
         const PROD_ENV_ID = `prod-${pipelineProps.prodEnv.region}`
-        const PROD_ENV_ID_2 = `prod-${pipelineProps.prodEnv.region}`
+        const PROD_ENV_ID_2 = `prod-${pipelineProps.prodEnv.region}-2`
 
         // build teams per environments
         const devTeams = createTeamList('dev', scope, pipelineProps.devEnv.account!);
@@ -168,16 +168,16 @@ export default class PipelineMultiEnvGitops {
                                     prodArgoAddonConfig,
                                 )
                         },
-                        {
-                            id: PROD_ENV_ID_2,
-                            stackBuilder: blueprint
-                                .clone(pipelineProps.prodEnv.region, pipelineProps.prodEnv.account)
-                                .name(PROD_ENV_ID_2)
-                                .teams(...prodTeams)
-                                .addOns(
-                                    prodArgoAddonConfig,
-                                )
-                        },
+                        // {
+                        //     id: PROD_ENV_ID_2,
+                        //     stackBuilder: blueprint
+                        //         .clone(pipelineProps.prodEnv.region, pipelineProps.prodEnv.account)
+                        //         .name(PROD_ENV_ID_2)
+                        //         .teams(...prodTeams)
+                        //         .addOns(
+                        //             prodArgoAddonConfig,
+                        //         )
+                        // },
                     ]
                 })
                 .build(scope, "eks-blueprint-pipeline-stack", props);
